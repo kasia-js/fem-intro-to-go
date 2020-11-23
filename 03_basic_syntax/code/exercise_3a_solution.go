@@ -1,11 +1,11 @@
 package main
-
-// import "fmt"
+import "fmt"
 
 // func main() {
-// 	mySentence := "Hello this is a sentence."
-
-// 	for _, value := range mySentence {
-// 		fmt.Println(string(value))
+// 	var sentence = "this is a sentence"
+// 	for index, letter := range sentence {
+// 		if index%2 != 0 {
+// 			fmt.Println(string(letter), index)
+// 		}
 // 	}
 // }
