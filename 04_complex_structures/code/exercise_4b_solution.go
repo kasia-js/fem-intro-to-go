@@ -1,14 +1,15 @@
 package main
 
-// import (
-// 	"fmt"
-// )
+import "fmt"
 
-// func average(num1, num2, num3 float64) float64 {
-// 	total := num1 + num2 + num3
-// 	return total / 3
-// }
+func average(args ...float64) float64 {
+	total := 0.0
+	for _, args := range args  {
+    total += args
+	}
+	return total/float64(len(args))
+}
 
-// func main() {
-// 	fmt.Println(average(10, 5, 7))
-// }
+func main() {
+	fmt.Println(average(8,7,9))
+}
