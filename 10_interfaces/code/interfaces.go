@@ -2,8 +2,10 @@ package main
 
 import "fmt"
 
-// Add a Describer interface
-
+// Describer interface describes the struct being passed in
+type Describer interface {
+	describe() string
+}
 // User is a single user type
 type User struct {
 	ID                         int
@@ -31,13 +33,19 @@ func (g *Group) describe() string {
 }
 
 // Create a function that doesn't care what type you pass in as long as the type "satisfies the interface"
+func DoTheDescribing(d Describer) string {
+	return d.describe()
+}
 
 func main() {
 	u1 := User{ID: 1, FirstName: "Marilyn", LastName: "Monroe", Email: "marilyn.monroe@gmail.com"}
 	u2 := User{ID: 1, FirstName: "Humphrey", LastName: "Bogart", Email: "humphrey.bogart@gmail.com"}
 	g := Group{role: "admin", users: []User{u1, u2}, newestUser: u2, spaceAvailable: true}
-	describeUser := u1.describe()
-	describeGroup := g.describe()
-	fmt.Println(describeUser)
-	fmt.Println(describeGroup)
+	
+	// describeUser := u1.describe()
+	// describeGroup := g.describe()
+  describeUserWithInterface := DoTheDescribing(&u1)
+  describeGroupWithInterface := DoTheDescribing(&g)
+	fmt.Println(describeUserWithInterface)
+	fmt.Println(describeGroupWithInterface)
 }
